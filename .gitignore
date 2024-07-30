@@ -1,0 +1,28 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.coverprofile
+
+# Temporary files created by text editors
+*.swp
+*.swo
+*.swn
+
+# Ignore folders for dependencies
+/vendor/
+/node_modules/
+
+# Ignore config and secret files
+config.toml
+
+# IDEs and editors specific files
+.vscode/
+.idea/
+*.iml

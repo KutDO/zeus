@@ -1,0 +1,79 @@
+basePath: /
+definitions:
+  main.DownloadTask:
+    properties:
+      decompress:
+        type: boolean
+      filename:
+        type: string
+      id:
+        type: string
+      url:
+        type: string
+      user_id:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a service for downloading files with progress tracking.
+  title: Download Service API
+  version: "1.0"
+paths:
+  /downloads:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: Create a new download task
+      parameters:
+      - description: URL of the file to download
+        in: formData
+        name: url
+        required: true
+        type: string
+      - description: Optional filename for the downloaded file
+        in: formData
+        name: filename
+        type: string
+      - description: Decompress the file if true
+        in: formData
+        name: decompress
+        type: boolean
+      - description: Optional user ID for the download
+        in: formData
+        name: user_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/main.DownloadTask'
+      summary: Create download task
+      tags:
+      - downloads
+  /progress/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Get the progress of a download task
+      parameters:
+      - description: Download Task ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: integer
+            type: object
+      summary: Get download progress
+      tags:
+      - downloads
+swagger: "2.0"
