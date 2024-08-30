@@ -1,7 +1,4 @@
 
-### README en Inglés
-
-```markdown
 # Download Service
 
 This is a service for downloading files with progress tracking. It is built using Go, Gorilla Mux for routing, and RabbitMQ for task queue management.
